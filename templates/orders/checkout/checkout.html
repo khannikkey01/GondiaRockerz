@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Checkout{% endblock title %}
+{% block content %}
+
+
+{% include "includes/alerts.html" %}
+
+<!-- Checkout content section start -->
+<section style="margin-bottom:50;background:#1c1427" class="pages checkout section-padding">
+    <div class="container">
+        <div class="row">
+        <form action="{% url 'orders:payment' %}" method="post">
+        {% csrf_token %}
+            <div class="col-sm-6">
+                <div style="border-radius:20px;" class="main-input single-cart-form padding60">
+                    <div class="log-title text-center">
+                        <h3><strong style="color:#d99879">Billing Address</strong></h3>
+                    </div>
+                    <div class="custom-input">
+                        
+                            <input type="text" name="first_name" placeholder="First Name" required />
+                            <input type="text" name="last_name" placeholder="Last Name" required />
+                            <input type="text" name="email" placeholder="Email" required />
+                            <input type="text" name="phone" placeholder="Phone Number" required />
+                            <input type="text" name="city" placeholder="City" required />
+                            <input type="text" name="country" placeholder="Country" required />
+                            <input type="text" name="state" placeholder="State" required />
+                            <div class="custom-mess">
+                                <textarea rows="2" placeholder="Address" name="address" required></textarea>
+                            </div>
+                            <div class="custom-mess">
+                                <textarea rows="2" placeholder="Order Notes" name="order_note"></textarea>
+                            </div>
+                        
+                    </div>
+                </div><br>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div style="border-radius:10px;" class="padding60">
+                  
+                    <div class="cart-form-text pay-details table-responsive">
+                        <div  style="width:100%" class="submit-text">
+                        <button href="#" class="btn btn-warning" style="background:#f4cca4;color:#1c1427; width:100% ; text-transform: capitalize;font-size:18px"><b>Place Order</b></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+</section>
+{% endblock content %}
